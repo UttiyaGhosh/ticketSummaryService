@@ -1,0 +1,21 @@
+<div style="display: flex; justify-content: right; margin-top: 10px;">
+  <button [routerLink]="['/addAdmin']">Add Admin</button>
+</div>
+<div>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let a of admins;">
+        <td>{{ a.id }}</td>
+        <td>{{ a.name }}</td>
+        <td>{{ a.designation }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

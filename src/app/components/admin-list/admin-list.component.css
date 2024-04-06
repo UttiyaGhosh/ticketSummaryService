@@ -1,0 +1,24 @@
+div{
+  display: flex;
+  justify-content: center;
+}
+
+table{
+  width: 80%;
+  margin-top: 20px;
+}
+
+.update-column{
+  display: flex; 
+  justify-content: center;
+  padding: 10px; 
+}
+
+button{
+  padding: 10px 20px; 
+  background-color: #17a2b8; 
+  color: #fff; 
+  border: none; 
+  border-radius: 5px; 
+  cursor: pointer;
+}
