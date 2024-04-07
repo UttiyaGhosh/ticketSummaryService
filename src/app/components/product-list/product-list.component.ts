@@ -1,12 +1,8 @@
 import { NgFor } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { ProductService, ProductType } from '../../services/product.service';
 
-type ProductType = {
-  id: number;
-  name: string;
-  description: string;
-};
 type updateProductFormType = {
   id: number;
 };
@@ -21,20 +17,21 @@ type updateProductFormType = {
 
 export class ProductListComponent {
   @Output() showUpdateProductForm: EventEmitter<updateProductFormType> = new EventEmitter<updateProductFormType>();
-  handleUpdate(id:number){
-    this.showUpdateProductForm.emit({id});
+
+  products : ProductType[] = [];
+  constructor(private _productService: ProductService) {}
+
+  ngOnInit(){
+    this._productService.getAllProducts().subscribe((data) => {
+      console.log(data)
+      this.products=data
+    });
   }
 
-  products : ProductType[] = [
-    {
-      id:1,
-      name:"Aspire 7 Laptop",
-      description:"I7 Laptop with Nvidia RTX graphics card"
-    },
-    {
-      id:2,
-      name:"Asus Laptop",
-      description:"AMD Laptop"
-    }
-  ];
+  handleDelete(id:string|null) {
+    if(id)
+      this._productService.deleteProduct(id).subscribe((data) => console.log(data));
+    
+  }
+
 }

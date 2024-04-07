@@ -1,1 +1,29 @@
-<p>add-admin works!</p>
+<form [formGroup]="addAdminForm" (ngSubmit)="onSubmit()">
+
+  Name: <input type="text" formControlName="name" /> <br />
+  @if(addAdminForm.get('name')?.invalid &&
+  addAdminForm.get('name')?.touched){<span>Name is required</span>}
+  @if(addAdminForm.controls.name.errors?.['minlength']){<span
+    >Name with at least 3 letter</span
+  >}
+  <br/>
+
+  Designation: <input type="text" formControlName="designation" /> <br />
+  @if(addAdminForm.get('designation')?.invalid &&
+  addAdminForm.get('designation')?.touched){<span>Designation is required</span>}
+  @if(addAdminForm.controls.designation.errors?.['minlength']){<span>Designation with at least 3 letter</span>}
+  <br/>
+  
+  Password: <input type="password" formControlName="password" /> <br />
+  @if(addAdminForm.get('password')?.invalid &&
+  addAdminForm.get('password')?.touched){<span>Password is required</span>}
+  @if(addAdminForm.controls.password.errors?.['minlength']){<span
+    >Password with at least 5 letter</span
+  >}
+  <br/>
+
+  <div class="button-group">
+    <input type="Submit" value="Add Admin" [disabled]="!addAdminForm.valid" />
+    <button type="button" class="cancel-button">Cancel</button>
+  </div>
+</form>

@@ -1,25 +1,26 @@
 <form [formGroup]="addProductForm" (ngSubmit)="onSubmit()">
 
-  Brand: <input type="text" formControlName="name" /> <br />
-  @if(addProductForm.get('name')?.invalid &&
-  addProductForm.get('name')?.touched){<span>Name is required</span>}
-  @if(addProductForm.controls.name.errors?.['minlength']){<span
-    >Name with at least 3 letter</span
+  Brand: <input type="text" formControlName="brand" /> <br />
+  @if(addProductForm.get('brand')?.invalid &&
+  addProductForm.get('brand')?.touched){<span>Brand is required</span>}
+  @if(addProductForm.controls.brand.errors?.['minlength']){<span
+    >Brand with at least 3 letter</span
   >}
+  <br/>
 
   Name: <input type="text" formControlName="name" /> <br />
   @if(addProductForm.get('name')?.invalid &&
   addProductForm.get('name')?.touched){<span>Name is required</span>}
-  @if(addProductForm.controls.name.errors?.['minlength']){<span
-    >Name with at least 3 letter</span
-  >}
+  @if(addProductForm.controls.name.errors?.['minlength']){<span>Name with at least 3 letter</span>}
+  <br/>
   
-  Description: <input type="text" formControlName="name" /> <br />
-  @if(addProductForm.get('name')?.invalid &&
-  addProductForm.get('name')?.touched){<span>Name is required</span>}
-  @if(addProductForm.controls.name.errors?.['minlength']){<span
-    >Name with at least 3 letter</span
+  Description: <input type="text" formControlName="description" /> <br />
+  @if(addProductForm.get('description')?.invalid &&
+  addProductForm.get('description')?.touched){<span>Description is required</span>}
+  @if(addProductForm.controls.description.errors?.['minlength']){<span
+    >Description with at least 5 letter</span
   >}
+  <br/>
 
   <div class="button-group">
     <input type="Submit" value="Add Product" [disabled]="!addProductForm.valid" />

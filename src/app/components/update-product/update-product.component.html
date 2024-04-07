@@ -1,0 +1,29 @@
+<form [formGroup]="updateProductForm" (ngSubmit)="onSubmit()">
+
+  Brand: <input type="text" formControlName="brand" /> <br />
+  @if(updateProductForm.get('brand')?.invalid &&
+  updateProductForm.get('brand')?.touched){<span>Brand is required</span>}
+  @if(updateProductForm.controls.brand.errors?.['minlength']){<span
+    >Brand with at least 3 letter</span
+  >}
+  <br/>
+
+  Name: <input type="text" formControlName="name" /> <br />
+  @if(updateProductForm.get('name')?.invalid &&
+  updateProductForm.get('name')?.touched){<span>Name is required</span>}
+  @if(updateProductForm.controls.name.errors?.['minlength']){<span>Name with at least 3 letter</span>}
+  <br/>
+  
+  Description: <input type="text" formControlName="description" /> <br />
+  @if(updateProductForm.get('description')?.invalid &&
+  updateProductForm.get('description')?.touched){<span>Description is required</span>}
+  @if(updateProductForm.controls.description.errors?.['minlength']){<span
+    >Description with at least 5 letter</span
+  >}
+  <br/>
+
+  <div class="button-group">
+    <input type="Submit" value="Update Product" [disabled]="!updateProductForm.valid" />
+    <button type="button" class="cancel-button">Cancel</button>
+  </div>
+</form>
