@@ -1,13 +1,7 @@
 import { NgFor } from '@angular/common';
 import { Component, EventEmitter } from '@angular/core';
 import { RouterLink } from '@angular/router';
-
-type AdminType = {
-  id: number;
-  name: string;
-  designation:string
-  joinDate: Date;
-};
+import { AdminService, AdminType } from '../../services/admin.service';
 
 @Component({
   selector: 'app-admin-list',
@@ -18,18 +12,14 @@ type AdminType = {
 })
 export class AdminListComponent {
 
-  admins : AdminType[] = [
-    {
-      id:1,
-      name:"John Doe",
-      designation:"CTO",
-      joinDate:new Date()
-    },
-    {
-      id:2,
-      name:"Jane Doe",
-      designation:"Manager",
-      joinDate:new Date()
-    }
-  ];
+  admins : AdminType[] = [];
+  constructor(private _adminService: AdminService) {}
+
+  ngOnInit(){
+    this._adminService.getAllAdmins().subscribe((data) => this.admins=data);
+  }
+
+  handleDelete(id:string) {
+    this._adminService.deleteAdmin(id).subscribe((data) => this.admins = this.admins.filter(admin=>admin._id!=id));
+  }
 }

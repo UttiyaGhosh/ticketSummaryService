@@ -5,16 +5,22 @@
   <table border="1">
     <thead>
       <tr>
-        <th>ID</th>
+        <th>UserName</th>
         <th>Name</th>
-        <th>Description</th>
+        <th>Designation</th>
+        <th>Join Date</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let a of admins;">
-        <td>{{ a.id }}</td>
+        <td>{{ a._id }}</td>
         <td>{{ a.name }}</td>
         <td>{{ a.designation }}</td>
+        <td>{{ a.joinDate }}</td>
+        <td class="update-column">
+          <button (click)="handleDelete(a._id)" style="background-color:#ff6347">Delete</button>
+        </td>
       </tr>
     </tbody>
   </table>

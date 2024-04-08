@@ -1,5 +1,13 @@
 <form [formGroup]="addAdminForm" (ngSubmit)="onSubmit()">
 
+  UserName: <input type="text" formControlName="_id" /> <br />
+  @if(addAdminForm.get('_id')?.invalid &&
+  addAdminForm.get('_id')?.touched){<span>UserName is required</span>}
+  @if(addAdminForm.controls._id.errors?.['minlength']){<span
+    >UserName with at least 3 letter</span
+  >}
+  <br/>
+
   Name: <input type="text" formControlName="name" /> <br />
   @if(addAdminForm.get('name')?.invalid &&
   addAdminForm.get('name')?.touched){<span>Name is required</span>}
@@ -21,7 +29,8 @@
     >Password with at least 5 letter</span
   >}
   <br/>
-
+  @if(message){<span>{{message}}</span>}
+  <br/>
   <div class="button-group">
     <input type="Submit" value="Add Admin" [disabled]="!addAdminForm.valid" />
     <button type="button" class="cancel-button">Cancel</button>

@@ -1,12 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-
-type AdminType = {
-  id: number;
-  name: string;
-  designation: string;
-  password: string;
-};
+import { AdminService, AdminType } from '../../services/admin.service';
+import { error } from 'console';
 
 @Component({
   selector: 'app-add-admin',
@@ -18,19 +13,31 @@ type AdminType = {
 export class AddAdminComponent {
 
   @Output() addAdmin: EventEmitter<AdminType> = new EventEmitter<AdminType>();
+  message: string = ""
+
+  constructor(private _adminService: AdminService) {}
 
   addAdminForm = new FormGroup({
+    _id: new FormControl('', [Validators.required, Validators.minLength(3)]),
     name: new FormControl('', [Validators.required, Validators.minLength(3)]),
     designation: new FormControl('', [Validators.required, Validators.minLength(3)]),
     password: new FormControl('', [Validators.required, Validators.minLength(5)]),
   });
 
   onSubmit() {
-    this.addAdmin.emit({
-      id: Math.floor(Math.random() * 1000),
+    const admin = {
+      _id: this.addAdminForm.value._id!,
       name: this.addAdminForm.value.name!,
       designation: this.addAdminForm.value.designation!,
       password: this.addAdminForm.value.password!,
+      joinDate:new Date()
+    }
+    this._adminService.addAdmin(admin).subscribe((data) => {
+      console.log(data)
+      if(data.error)
+        this.message=data.error
+      else
+        this.message=""
     });
   }
 

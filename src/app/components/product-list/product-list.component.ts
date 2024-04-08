@@ -22,15 +22,14 @@ export class ProductListComponent {
   constructor(private _productService: ProductService) {}
 
   ngOnInit(){
-    this._productService.getAllProducts().subscribe((data) => {
-      console.log(data)
-      this.products=data
-    });
+    this._productService.getAllProducts().subscribe((data) => this.products=data);
   }
 
   handleDelete(id:string|null) {
-    if(id)
-      this._productService.deleteProduct(id).subscribe((data) => console.log(data));
+    if(id){
+      this._productService.deleteProduct(id).subscribe((data) => this.products = this.products.filter(product=>product._id!=id));
+      
+    }
     
   }
 
