@@ -1,11 +1,12 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ProductService, ProductType } from '../../services/product.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-add-product',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule,RouterLink],
   templateUrl: './add-product.component.html',
   styleUrl: './add-product.component.css'
 })

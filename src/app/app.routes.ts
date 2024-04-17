@@ -5,12 +5,14 @@ import { AddProductComponent } from './components/add-product/add-product.compon
 import { AdminListComponent } from './components/admin-list/admin-list.component';
 import { AddAdminComponent } from './components/add-admin/add-admin.component';
 import { UpdateProductComponent } from './components/update-product/update-product.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 export const routes: Routes = [
   { path: '', component: AdminListComponent },
   { path: 'addAdmin', component: AddAdminComponent},
   { path: 'products', component: ProductListComponent },
   { path: 'addProduct', component: AddProductComponent},
-  { path: 'updateProduct', component: UpdateProductComponent},
+  { path: 'updateProduct/:id', component: UpdateProductComponent},
+  { path: 'changePassword', component: ChangePasswordComponent},
   { path: '**', component: PageNotFoundComponent },
 ];

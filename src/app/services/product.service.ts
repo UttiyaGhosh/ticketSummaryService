@@ -13,7 +13,7 @@ export interface ProductType {
   providedIn: 'root'
 })
 export class ProductService {
-  private baseUrl: string = 'http://localhost:3001/product';
+  private baseUrl: string = 'http://localhost:3001/api/product';
   constructor(private http: HttpClient) {}
 
   getAllProducts():Observable<ProductType[]> {
@@ -24,8 +24,8 @@ export class ProductService {
     return this.http.post<ProductType>(this.baseUrl, product);
   }
 
-  getProduct():Observable<ProductType> {
-    return this.http.get<ProductType>(this.baseUrl);
+  getProduct(id:string):Observable<ProductType> {
+    return this.http.get<ProductType>(`${this.baseUrl}?_id=${id}`);
   }
 
   updateProduct(product:ProductType): Observable<ProductType> {

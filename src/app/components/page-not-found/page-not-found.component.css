@@ -1,0 +1,14 @@
+.not-found-container {
+  text-align: center;
+}
+
+h1 {
+  font-size: 3rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 1.5rem;
+  color: #666;
+}

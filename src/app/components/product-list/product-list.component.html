@@ -17,7 +17,7 @@
         <td>{{ p.brand }}</td>
         <td>{{ p.description }}</td>
         <td class="update-column">
-          <button [routerLink]="['/updateProduct']" style="background-color:#4CAF50">Update</button>
+          <button [routerLink]="['/updateProduct', p._id]" style="background-color:#4CAF50">Update</button>
           <button (click)="handleDelete(p._id)" style="background-color:#ff6347">Delete</button>
         </td>
       </tr>

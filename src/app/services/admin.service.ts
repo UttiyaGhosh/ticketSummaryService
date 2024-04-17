@@ -20,7 +20,7 @@ export interface AdminType {
 })
 export class AdminService {
 
-  private baseUrl: string = 'http://localhost:3001/admin';
+  private baseUrl: string = 'https://tss-server.vercel.app/api/admin';
   constructor(private http: HttpClient) {}
 
   getAllAdmins():Observable<AdminType[]> {

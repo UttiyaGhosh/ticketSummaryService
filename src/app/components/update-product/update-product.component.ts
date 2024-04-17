@@ -1,16 +1,17 @@
 import { Component } from '@angular/core';
 import { ProductService, ProductType } from '../../services/product.service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-update-product',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule,RouterLink],
   templateUrl: './update-product.component.html',
   styleUrl: './update-product.component.css'
 })
 export class UpdateProductComponent {
-
+  productId: string ="";
   product : ProductType = {
     _id:null,
     brand: '',
@@ -23,10 +24,14 @@ export class UpdateProductComponent {
     description: new FormControl('', [Validators.required, Validators.minLength(5)]),
   });
   
-  constructor(private _productService: ProductService) {}
+  constructor(private _productService: ProductService,private route: ActivatedRoute) {}
 
   ngOnInit(){
-    this._productService.getProduct().subscribe((data) => {
+    this.route.params.subscribe(params => {
+      this.productId = params['id'];
+    });
+
+    this._productService.getProduct(this.productId).subscribe((data) => {
       this.product=data
       this.updateProductForm = new FormGroup({
         name: new FormControl(this.product.name, [Validators.required, Validators.minLength(3)]),

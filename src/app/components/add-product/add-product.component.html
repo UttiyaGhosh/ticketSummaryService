@@ -24,6 +24,6 @@
 
   <div class="button-group">
     <input type="Submit" value="Add Product" [disabled]="!addProductForm.valid" />
-    <button type="button" class="cancel-button">Cancel</button>
+    <button type="button" class="cancel-button" [routerLink]="['/products']">Cancel</button>
   </div>
 </form>

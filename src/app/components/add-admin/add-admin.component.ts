@@ -1,12 +1,12 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AdminService, AdminType } from '../../services/admin.service';
-import { error } from 'console';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-add-admin',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule,RouterLink],
   templateUrl: './add-admin.component.html',
   styleUrl: './add-admin.component.css'
 })
