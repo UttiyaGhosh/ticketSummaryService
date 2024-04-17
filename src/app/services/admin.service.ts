@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 export interface AdminResponse {
-  success: string|null,
-  error:string|null
+  message:string|null,
+  payload: string|AdminType|null
 };
 
 export interface AdminType {
@@ -13,6 +13,12 @@ export interface AdminType {
   designation:string
   joinDate: Date;
   password:string;
+};
+
+export interface ChangePasswordType {
+  _id: string,
+  password:string,
+  newPassword:string
 };
 
 @Injectable({
@@ -31,12 +37,12 @@ export class AdminService {
     return this.http.post<AdminResponse>(this.baseUrl, admin);
   }
 
-  getAdmin():Observable<AdminType> {
-    return this.http.get<AdminType>(this.baseUrl);
+  getAdmin(id:string|null):Observable<AdminType> {
+    return this.http.get<AdminType>(`${this.baseUrl}?_id=${id}`);
   }
 
-  updateAdmin(admin:AdminType): Observable<AdminType> {
-    return this.http.put<AdminType>(this.baseUrl, admin);
+  changePassword(changePassword:ChangePasswordType): Observable<AdminResponse> {
+    return this.http.put<AdminResponse>(this.baseUrl, changePassword);
   }
 
   deleteAdmin(id:string): Observable<AdminType> {

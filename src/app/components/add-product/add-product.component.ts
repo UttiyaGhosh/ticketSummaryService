@@ -12,7 +12,7 @@ import { RouterLink } from '@angular/router';
 })
 export class AddProductComponent {
 
-  @Output() addProduct: EventEmitter<ProductType> = new EventEmitter<ProductType>();
+  message: string|null = ""
 
   constructor(private _productService: ProductService) {}
   
@@ -29,6 +29,6 @@ export class AddProductComponent {
       name: this.addProductForm.value.name!,
       description: this.addProductForm.value.description!,
     }
-    this._productService.addProduct(product).subscribe((data) => console.log(data));
+    this._productService.addProduct(product).subscribe((data) => this.message=data.message);
   }
 }

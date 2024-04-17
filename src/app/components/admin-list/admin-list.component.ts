@@ -13,9 +13,11 @@ import { AdminService, AdminType } from '../../services/admin.service';
 export class AdminListComponent {
 
   admins : AdminType[] = [];
+  userId: string|null ="";
   constructor(private _adminService: AdminService) {}
 
   ngOnInit(){
+    this.userId = localStorage.getItem('userId')
     this._adminService.getAllAdmins().subscribe((data) => this.admins=data);
   }
 

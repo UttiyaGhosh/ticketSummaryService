@@ -12,6 +12,8 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 })
 export class UpdateProductComponent {
   productId: string ="";
+  message: string|null = ""
+
   product : ProductType = {
     _id:null,
     brand: '',
@@ -49,6 +51,6 @@ export class UpdateProductComponent {
       name: this.updateProductForm.value.name!,
       description: this.updateProductForm.value.description!,
     }
-    this._productService.updateProduct(product).subscribe((data) => console.log(data));
+    this._productService.updateProduct(product).subscribe((data) => this.message=data.message);
   }
 }

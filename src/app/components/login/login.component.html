@@ -1,0 +1,23 @@
+
+<h1>Ticket Support System</h1>
+<img src="assets/login.png" alt="Login Image" class="login-image">
+
+<form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="username">Username:</label>
+    <input formControlName="username" type="username" id="username" />
+    <p class="error" *ngIf="!loginForm.get('username')?.valid && loginForm.get('username')?.touched">
+     UserName is required
+    </p>
+  </div>
+
+  <div class="form-group">
+    <label for="password">Password:</label>
+    <input formControlName="password" type="password" id="password" />
+    <p class="error" *ngIf="!loginForm.get('password')?.valid && loginForm.get('password')?.touched">
+      Password is required
+    </p>
+  </div>
+  <p class="error-message">{{ errorMessage }}</p>
+  <input type="Submit" value="Login" class="btn" [disabled]="!loginForm.valid" />
+</form>

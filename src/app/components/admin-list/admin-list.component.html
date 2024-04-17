@@ -1,27 +1,30 @@
 <div style="display: flex; justify-content: right; margin-top: 10px;">
   <button [routerLink]="['/addAdmin']">Add Admin</button>
 </div>
-<div>
-  <table border="1">
-    <thead>
-      <tr>
-        <th>UserName</th>
-        <th>Name</th>
-        <th>Designation</th>
-        <th>Join Date</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let a of admins;">
-        <td>{{ a._id }}</td>
-        <td>{{ a.name }}</td>
-        <td>{{ a.designation }}</td>
-        <td>{{ a.joinDate }}</td>
-        <td class="update-column">
-          <button (click)="handleDelete(a._id)" style="background-color:#ff6347">Delete</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+<div class="container">
+  <div *ngFor="let a of admins;" class="card">
+    <div class="card-content">
+      <div class="card-row">
+        <div class="card-label">UserName:</div>
+        <div class="card-value">{{ a._id }}</div>
+      </div>
+      <div class="card-row">
+        <div class="card-label">Name:</div>
+        <div class="card-value">{{ a.name }}</div>
+      </div>
+      <div class="card-row">
+        <div class="card-label">Designation:</div>
+        <div class="card-value">{{ a.designation }}</div>
+      </div>
+      <div class="card-row">
+        <div class="card-label">Join Date:</div>
+        <div class="card-value">{{ a.joinDate }}</div>
+      </div>
+      <div class="card-row">
+        @if(userId!=a._id){
+          <button (click)="handleDelete(a._id)" class="delete-button">Delete</button>
+        }
+      </div>
+    </div>
+  </div>
 </div>

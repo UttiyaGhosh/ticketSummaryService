@@ -12,8 +12,7 @@ import { RouterLink } from '@angular/router';
 })
 export class AddAdminComponent {
 
-  @Output() addAdmin: EventEmitter<AdminType> = new EventEmitter<AdminType>();
-  message: string = ""
+  message: string|null = ""
 
   constructor(private _adminService: AdminService) {}
 
@@ -33,11 +32,7 @@ export class AddAdminComponent {
       joinDate:new Date()
     }
     this._adminService.addAdmin(admin).subscribe((data) => {
-      console.log(data)
-      if(data.error)
-        this.message=data.error
-      else
-        this.message=""
+      this.message=data.message
     });
   }
 

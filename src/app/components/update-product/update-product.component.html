@@ -21,7 +21,8 @@
     >Description with at least 5 letter</span
   >}
   <br/>
-
+  @if(message){<span>{{message}}</span>}
+  <br/>
   <div class="button-group">
     <input type="Submit" value="Update Product" [disabled]="!updateProductForm.valid" />
     <button type="button" [routerLink]="['/products']" class="cancel-button">Cancel</button>

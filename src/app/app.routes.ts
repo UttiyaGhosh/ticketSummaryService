@@ -5,7 +5,9 @@ import { AddProductComponent } from './components/add-product/add-product.compon
 import { AdminListComponent } from './components/admin-list/admin-list.component';
 import { AddAdminComponent } from './components/add-admin/add-admin.component';
 import { UpdateProductComponent } from './components/update-product/update-product.component';
-import { ChangePasswordComponent } from './change-password/change-password.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { LoginComponent } from './components/login/login.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 export const routes: Routes = [
   { path: '', component: AdminListComponent },
@@ -14,5 +16,6 @@ export const routes: Routes = [
   { path: 'addProduct', component: AddProductComponent},
   { path: 'updateProduct/:id', component: UpdateProductComponent},
   { path: 'changePassword', component: ChangePasswordComponent},
+  { path: 'logout', component: LogoutComponent },
   { path: '**', component: PageNotFoundComponent },
 ];

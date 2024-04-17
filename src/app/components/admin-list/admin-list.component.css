@@ -1,24 +1,51 @@
-div{
-  display: flex;
-  justify-content: center;
-}
-
-table{
-  width: 80%;
-  margin-top: 20px;
-}
-
-.update-column{
-  display: flex; 
-  justify-content: center;
-  padding: 10px; 
-}
-
 button{
   padding: 10px 20px; 
   background-color: #17a2b8; 
   color: #fff; 
   border: none; 
   border-radius: 5px; 
+  cursor: pointer;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  justify-items: center;
+  margin: 10px;
+}
+
+.card {
+  background-color: #ded;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  width: 80%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.card-content {
+  padding: 10px;
+}
+
+.card-row {
+  display: flex;
+  margin-bottom: 5px;
+}
+
+.card-label {
+  flex: 1;
+  font-weight: bold;
+}
+
+.card-value {
+  flex: 2;
+}
+
+.delete-button {
+  background-color: #ff6347;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
   cursor: pointer;
 }

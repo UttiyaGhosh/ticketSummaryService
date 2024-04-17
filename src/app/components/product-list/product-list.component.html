@@ -1,26 +1,27 @@
 <div style="display: flex; justify-content: right; margin-top: 10px;">
   <button [routerLink]="['/addProduct']">Add Product</button>
 </div>
-<div>
-  <table border="1">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Brand</th>
-        <th>Description</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let p of products;">
-        <td>{{ p.name }}</td>
-        <td>{{ p.brand }}</td>
-        <td>{{ p.description }}</td>
-        <td class="update-column">
-          <button [routerLink]="['/updateProduct', p._id]" style="background-color:#4CAF50">Update</button>
-          <button (click)="handleDelete(p._id)" style="background-color:#ff6347">Delete</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+<div class="container">
+  <div *ngFor="let p of products;" class="card">
+    <div class="card-content">
+      <div class="card-row">
+        <div class="card-label">Name:</div>
+        <div class="card-value">{{ p.name }}</div>
+      </div>
+      <div class="card-row">
+        <div class="card-label">Brand:</div>
+        <div class="card-value">{{ p.brand }}</div>
+      </div>
+      <div class="card-row">
+        <div class="card-label">Description:</div>
+        <div class="card-value">{{ p.description }}</div>
+      </div>
+      <div class="card-row">
+        <button [routerLink]="['/updateProduct', p._id]" class="update-button">Update</button>
+        <button (click)="handleDelete(p._id)" class="delete-button">Delete</button>
+      </div>
+    </div>
+  </div>
 </div>
+
+
